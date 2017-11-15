@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: surveye2e
+# key: surveye2e
+# --
+blaze test //javatests/com/google/video/youtube/monetization/e2e/survey/bulleit:all --test_arg=--continue_on_pdiff_fail=true --flaky_test_attempts=1

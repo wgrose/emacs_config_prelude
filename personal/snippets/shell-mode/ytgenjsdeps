@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ytgenjsdeps
+# key: ytgenjsdeps
+# --
+./video/youtube/src/web/genjsdeps.sh

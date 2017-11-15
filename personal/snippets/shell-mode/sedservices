@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: replace_in_services_ads
+# key: sedservices
+# --
+find video/youtube/src/web/javascript/library/player/services/ads/ -not -path "*ad_ima*" -type f -exec sed -i -r "s/$1/$2/g" {} \;

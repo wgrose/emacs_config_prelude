@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: typetest
+# key: typetest
+# --
+blaze test //video/youtube/src/web/javascript/library/player/integration_tests:new_type_inf_build_test

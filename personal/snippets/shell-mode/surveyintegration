@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: surveyintegration
+# key: surveyintegration
+# --
+blaze test //video/youtube/src/web/javascript/library/player/services/ads/integration_tests:jstests --test_filter=survey

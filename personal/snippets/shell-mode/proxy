@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: aproxymate
+# key: proxy
+# --
+aproxymate ${1:survey_pre_dur_20sec_multiselect}

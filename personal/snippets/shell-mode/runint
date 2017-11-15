@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: runint
+# key: runint
+# --
+blaze run //video/youtube/src/web/javascript/library/player/services/ads/integration_tests:jstests_debug
