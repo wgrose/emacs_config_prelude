@@ -152,7 +152,7 @@
              (toggle-truncate-lines 1)
              (protect-process-buffer-from-kill-mode 1)
              (dirtrack-mode 1)
-             (setq dirtrack-list '("wgrose@wgrose.lax:\\(.*\\)\\$" 1 t))
+             (setq dirtrack-list '("wgrose@wgrose.[a-z]{3}:\\(.*\\)\\$" 1 t))
              ))
 
 (provide 'custom)
