@@ -87,7 +87,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (zop-to-char zenburn-theme which-key web-mode web-beautify volatile-highlights undo-tree tide solarized-theme smex smartrep smartparens smart-mode-line rainbow-mode rainbow-delimiters protobuf-mode ov operate-on-number move-text magit key-chord json-mode js2-mode imenu-anywhere ido-ubiquitous highlight-escape-sequences helm-projectile helm-descbinds helm-ag haskell-mode guru-mode grizzl gotest god-mode go-projectile gitignore-mode gitconfig-mode git-timemachine gist geiser flx-ido expand-region elisp-slime-nav easy-kill discover-my-major diminish diff-hl d-mode company-go company-anaconda cl-generic browse-kill-ring beacon anzu ag ace-window)))
+    (monky zop-to-char zenburn-theme which-key web-mode web-beautify volatile-highlights undo-tree tide solarized-theme smex smartrep smartparens smart-mode-line rainbow-mode rainbow-delimiters protobuf-mode ov operate-on-number move-text magit key-chord json-mode js2-mode imenu-anywhere ido-ubiquitous highlight-escape-sequences helm-projectile helm-descbinds helm-ag haskell-mode guru-mode grizzl gotest god-mode go-projectile gitignore-mode gitconfig-mode git-timemachine gist geiser flx-ido expand-region elisp-slime-nav easy-kill discover-my-major diminish diff-hl d-mode company-go company-anaconda cl-generic browse-kill-ring beacon anzu ag ace-window)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(typescript-indent-level 2)
  '(vc-annotate-background "#2B2B2B")
