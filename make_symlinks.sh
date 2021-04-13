@@ -1,12 +1,13 @@
 #!/bin/sh
 SCRIPT_PATH=`realpath $(dirname $0)`
-rm ~/.emacs.d/prelude-modules.el
-ln -s $SCRIPT_PATH/prelude-modules.el ~/.emacs.d/prelude-modules.el
 if [[ -d ~/.emacs.d/personal ]]; then
   rm -rf ~/.emacs.d/personal
 elif [[ -h ~/.emacs.d/personal ]]; then
   rm -f ~/.emacs.d/personal
 fi
+
+#rm ~/.emacs.d/personal/prelude-modules.el
+#ln -s $SCRIPT_PATH/prelude-modules.el ~/.emacs.d/personal/prelude-modules.el
 
 ln -s $SCRIPT_PATH/personal/ ~/.emacs.d/personal
 
