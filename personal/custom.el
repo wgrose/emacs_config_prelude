@@ -64,13 +64,15 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
- '(c-basic-offset 2)
- '(comment-fill-column nil)
+   ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#839496"])
+ '(c-basic-offset 2) '(comment-fill-column nil)
  '(company-quickhelp-color-background "#4F4F4F")
  '(company-quickhelp-color-foreground "#DCDCCC")
+ '(compilation-error-regexp-alist
+   '(google3-build-log-parser-info google3-build-log-parser-warning google3-build-log-parser-error google3-build-log-parser-python-traceback google-go-cgo google-blaze-error google-blaze-warning google-log-error google-log-warning google-log-info google-log-fatal-message google-forge-python gunit-stack-trace absoft ada aix ant bash borland python-tracebacks-and-caml cmake cmake-info comma cucumber msft edg-1 edg-2 epc ftnchek gradle-kotlin iar ibm irix java jikes-file maven jikes-line clang-include clang-include gcc-include ruby-Test::Unit gmake gnu lcc makepp mips-1 mips-2 omake oracle perl php rxp sparc-pascal-file sparc-pascal-line sparc-pascal-example sun sun-ada watcom 4bsd gcov-file gcov-header gcov-nomark gcov-called-line gcov-never-called perl--Pod::Checker perl--Test perl--Test2 perl--Test::Harness weblint guile-file guile-line))
+ '(custom-enabled-themes '(subtle-hacker))
  '(custom-safe-themes
-   '("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))
+   '("51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "f5b6be56c9de9fd8bdd42e0c05fecb002dedb8f48a5f00e769370e4517dde0e8" "4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" "fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" "c4cecd97a6b30d129971302fd8298c2ff56189db0a94570e7238bc95f9389cfb" "abd7719fd9255fcd64f631664390e2eb89768a290ee082a9f0520c5f12a660a8" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))
  '(erc-email-userid "wgrose@google.com")
  '(erc-networks-alist '((Google "corp.google.com")))
  '(erc-nick "wgrose")
@@ -118,7 +120,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ )p
 
 (load-file
  "/usr/share/emacs/site-lisp/emacs-google-config/devtools/editors/emacs/google.el")
@@ -145,13 +147,38 @@
 (add-hook 'c++-mode-hook 'google-set-c-style)
 
 ;; Use dirtrack by prompt mode since shell-dirtrack can't follow citc.
-(add-hook 'shell-mode-hook
-          '(lambda()
-             (toggle-truncate-lines 1)
-             (protect-process-buffer-from-kill-mode 1)
-             (dirtrack-mode 1)
-             (setq dirtrack-list '("wgrose@wgrose.[a-z]+:\\(.*\\)\\$" 1 t))
-             ))
+;;(add-hook 'shell-mode-hook
+;;          '(lambda()
+;;             (toggle-truncate-lines 1)
+;;             (protect-process-buffer-from-kill-mode 1)
+;;             (dirtrack-mode 1)
+;;             (setq dirtrack-list '("wgrose@wgrose.[a-z]+:\\(.*\\)\\$" 1 t))
+;;             ))
+
+(defun shell-procfs-dirtrack (str)
+  (prog1 str
+    (when (string-match comint-prompt-regexp str)
+      (let ((directory (file-symlink-p
+                        (format "/proc/%s/cwd"
+                                (process-id
+                                 (get-buffer-process
+                                  (current-buffer)))))))
+        (when (file-directory-p directory)
+          (cd directory))))))
+
+(define-minor-mode shell-procfs-dirtrack-mode
+  "Track shell directory by inspecting procfs."
+  nil nil nil
+  (cond (shell-procfs-dirtrack-mode
+         (when (bound-and-true-p shell-dirtrack-mode)
+           (shell-dirtrack-mode 0))
+         (when (bound-and-true-p dirtrack-mode)
+           (dirtrack-mode 0))
+         (add-hook 'comint-preoutput-filter-functions
+                   'shell-procfs-dirtrack nil t))
+        (t
+         (remove-hook 'comint-preoutput-filter-functions
+                      'shell-procfs-dirtrack t))))
 
 (provide 'custom)
 ;;; custom.el ends here
