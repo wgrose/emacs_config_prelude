@@ -120,7 +120,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )p
+ )
 
 (load-file
  "/usr/share/emacs/site-lisp/emacs-google-config/devtools/editors/emacs/google.el")
